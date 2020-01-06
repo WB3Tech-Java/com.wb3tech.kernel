@@ -9,13 +9,14 @@
     <version>0.1.0</version>
 
     <properties>
+        <java.version>13</java.version>
+        <junit.jupiter.version>5.6.0-M1</junit.jupiter.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.target>1.13</maven.compiler.target>
-        <maven.compiler.source>1.13</maven.compiler.source>
-        <maven.compiler.release>7</maven.compiler.release>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>3.0.0-M4</maven.surefire.plugin.version>
-        <junit.jupiter.version>5.6.0-M1</junit.jupiter.version>
     </properties>
 
     <dependencies>
@@ -46,7 +47,7 @@
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>WB3Tech - Java Kernel - Apache Maven Packages</name>
+            <name>WB3Tech - Java - Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/WB3Tech-Java/com.wb3tech.kernel</url>
         </repository>
     </distributionManagement>
