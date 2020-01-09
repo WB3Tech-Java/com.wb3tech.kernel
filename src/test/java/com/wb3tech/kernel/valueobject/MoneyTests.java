@@ -87,6 +87,39 @@ public class MoneyTests {
 
     }
 
+    @Test @Tag("Small") @DisplayName("Money with amount of 13.00 USD should be less than Money with amount 15.00 USD")
+    public void CompareAmountLessThan() {
+
+        var thirteen = Money.Of(13.00, "USD");
+        var fifteen = Money.Of(15.00, "USD");
+        var isLessThan = thirteen.LessThan(fifteen);
+
+        assertTrue(isLessThan);
+
+    }
+
+    @Test @Tag("Small") @DisplayName("Money with amount of 15.00 USD should be greater than Money with amount 13.00 USD")
+    public void CompareAmountGreaterThan() {
+
+        var thirteen = Money.Of(13.00, "USD");
+        var fifteen = Money.Of(15.00, "USD");
+        var isGreaterThan = fifteen.GreaterThan(thirteen);
+
+        assertTrue(isGreaterThan);
+
+    }
+
+    @Test @Tag("Small") @DisplayName("Money with amount of 13.00 USD should equal money with amount 13.00 USD")
+    public void CompareAmountEquals() {
+
+        var fifteenInstanceOne = Money.Of(15.00, "USD");
+        var fifteenInstanceTwo = Money.Of(15.00, "USD");
+        var isGreaterThan = fifteenInstanceOne.Equals(fifteenInstanceTwo);
+
+        assertTrue(isGreaterThan);
+
+    }
+
     @Test @Tag("Small") @DisplayName("Should get a Money with amount of -5 when you subtract a money instance of 10 " +
             "and a second instance o 15")
     public void ShouldGetNegativeMoney() {
@@ -99,7 +132,7 @@ public class MoneyTests {
 
     }
 
-    @Test @Tag("Small") @DisplayName("Should throw an ArithmeticExceptionn" +
+    @Test @Tag("Small") @DisplayName("Should throw an ArithmeticException" +
             "with message 'Cannot subtract monies of two different currencies'")
     public void SubtractShouldThrowArithmeticExceptionForNotSameCurrency() {
 
@@ -122,6 +155,45 @@ public class MoneyTests {
 
         var exception = assertThrows(ArithmeticException.class, () -> USDollar.Plus(britishPounds));
         Assertions.assertEquals("Cannot add monies of two different currencies.", exception.getMessage());
+
+    }
+
+    @Test @Tag("Small") @DisplayName("Should throw an ArithmeticException " +
+            "with message 'Cannot compare of two different currencies.' " +
+            "when comparing amount-less-than for two different currencies.")
+    public void AmountLessThanThrowArithmeticExceptionForNotSameCurrency() {
+
+        var thirteen = Money.Of(13.00, "USD");
+        var fifteen = Money.Of(15.00, "GBP");
+
+        var exception = assertThrows(ArithmeticException.class, () -> thirteen.LessThan(fifteen));
+        Assertions.assertEquals("Cannot compare of two different currencies.", exception.getMessage());
+
+    }
+
+    @Test @Tag("Small") @DisplayName("Should throw an ArithmeticException " +
+            "with message 'Cannot compare of two different currencies.' " +
+            "when comparing amount-greater-than for two different currencies.")
+    public void AmountGreaterThanArithmeticExceptionForNotSameCurrency() {
+
+        var thirteen = Money.Of(13.00, "USD");
+        var fifteen = Money.Of(15.00, "GBP");
+
+        var exception = assertThrows(ArithmeticException.class, () -> fifteen.GreaterThan(thirteen));
+        Assertions.assertEquals("Cannot compare of two different currencies.", exception.getMessage());
+
+    }
+
+    @Test @Tag("Small") @DisplayName("Should throw an ArithmeticException " +
+            "with message 'Cannot compare of two different currencies.' " +
+            "when comparing amount-equals for two different currencies.")
+    public void AmountEqualsArithmeticExceptionForNotSameCurrency() {
+
+        var fifteenInstanceOne = Money.Of(15.00, "USD");
+        var fifteenInstanceTwo = Money.Of(15.00, "GBP");
+
+        var exception = assertThrows(ArithmeticException.class, () -> fifteenInstanceOne.Equals(fifteenInstanceTwo));
+        Assertions.assertEquals("Cannot compare of two different currencies.", exception.getMessage());
 
     }
 

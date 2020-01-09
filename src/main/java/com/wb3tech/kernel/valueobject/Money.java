@@ -44,6 +44,21 @@ public class Money {
         return new Money(totalAmount, this.currency);
     }
 
+    public boolean LessThan(Money money) {
+        this.validateDifferentCurrencyForAmountComparators(money);
+        return this.getAmount() < money.getAmount();
+    }
+
+    public boolean GreaterThan(Money money) {
+        this.validateDifferentCurrencyForAmountComparators(money);
+        return this.getAmount() > money.getAmount();
+    }
+
+    public boolean Equals(Money money) {
+        this.validateDifferentCurrencyForAmountComparators(money);
+        return this.getAmount() == money.getAmount();
+    }
+
     public double getAmount() {
         return this.amount.doubleValue();
     }
@@ -78,6 +93,10 @@ public class Money {
 
     private boolean isDifferentCurrency(Money money) {
         return !this.isSameCurrency(money);
+    }
+
+    private void validateDifferentCurrencyForAmountComparators(Money money) {
+        if(this.isDifferentCurrency(money)) { throw new ArithmeticException("Cannot compare of two different currencies."); }
     }
 
 }
