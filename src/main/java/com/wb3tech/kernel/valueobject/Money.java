@@ -44,17 +44,17 @@ public class Money {
         return new Money(totalAmount, this.currency);
     }
 
-    public boolean AmountLessThan(Money money) {
+    public boolean LessThan(Money money) {
         this.validateDifferentCurrencyForAmountComparators(money);
         return this.getAmount() < money.getAmount();
     }
 
-    public boolean AmountGreaterThan(Money money) {
+    public boolean GreaterThan(Money money) {
         this.validateDifferentCurrencyForAmountComparators(money);
         return this.getAmount() > money.getAmount();
     }
 
-    public boolean AmountEquals(Money money) {
+    public boolean Equals(Money money) {
         this.validateDifferentCurrencyForAmountComparators(money);
         return this.getAmount() == money.getAmount();
     }

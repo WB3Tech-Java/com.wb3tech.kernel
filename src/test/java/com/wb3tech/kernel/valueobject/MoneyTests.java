@@ -92,7 +92,7 @@ public class MoneyTests {
 
         var thirteen = Money.Of(13.00, "USD");
         var fifteen = Money.Of(15.00, "USD");
-        var isLessThan = thirteen.AmountLessThan(fifteen);
+        var isLessThan = thirteen.LessThan(fifteen);
 
         assertTrue(isLessThan);
 
@@ -103,7 +103,7 @@ public class MoneyTests {
 
         var thirteen = Money.Of(13.00, "USD");
         var fifteen = Money.Of(15.00, "USD");
-        var isGreaterThan = fifteen.AmountGreaterThan(thirteen);
+        var isGreaterThan = fifteen.GreaterThan(thirteen);
 
         assertTrue(isGreaterThan);
 
@@ -114,7 +114,7 @@ public class MoneyTests {
 
         var fifteenInstanceOne = Money.Of(15.00, "USD");
         var fifteenInstanceTwo = Money.Of(15.00, "USD");
-        var isGreaterThan = fifteenInstanceOne.AmountEquals(fifteenInstanceTwo);
+        var isGreaterThan = fifteenInstanceOne.Equals(fifteenInstanceTwo);
 
         assertTrue(isGreaterThan);
 
@@ -166,7 +166,7 @@ public class MoneyTests {
         var thirteen = Money.Of(13.00, "USD");
         var fifteen = Money.Of(15.00, "GBP");
 
-        var exception = assertThrows(ArithmeticException.class, () -> thirteen.AmountLessThan(fifteen));
+        var exception = assertThrows(ArithmeticException.class, () -> thirteen.LessThan(fifteen));
         Assertions.assertEquals("Cannot compare of two different currencies.", exception.getMessage());
 
     }
@@ -179,7 +179,7 @@ public class MoneyTests {
         var thirteen = Money.Of(13.00, "USD");
         var fifteen = Money.Of(15.00, "GBP");
 
-        var exception = assertThrows(ArithmeticException.class, () -> fifteen.AmountGreaterThan(thirteen));
+        var exception = assertThrows(ArithmeticException.class, () -> fifteen.GreaterThan(thirteen));
         Assertions.assertEquals("Cannot compare of two different currencies.", exception.getMessage());
 
     }
@@ -192,7 +192,7 @@ public class MoneyTests {
         var fifteenInstanceOne = Money.Of(15.00, "USD");
         var fifteenInstanceTwo = Money.Of(15.00, "GBP");
 
-        var exception = assertThrows(ArithmeticException.class, () -> fifteenInstanceOne.AmountEquals(fifteenInstanceTwo));
+        var exception = assertThrows(ArithmeticException.class, () -> fifteenInstanceOne.Equals(fifteenInstanceTwo));
         Assertions.assertEquals("Cannot compare of two different currencies.", exception.getMessage());
 
     }
