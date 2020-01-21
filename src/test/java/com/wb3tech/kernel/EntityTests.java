@@ -1,5 +1,7 @@
 package com.wb3tech.kernel;
 
+import com.wb3tech.kernel.entity.Entity;
+import com.wb3tech.kernel.entity.Identity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -24,7 +26,7 @@ public class EntityTests {
     @DisplayName("When a null Identity is provided, the entity should throw a NullPointerException with the message 'The identity is null.' .")
     public void IdentityThrowNullPointerException() {
 
-        var exception = assertThrows(NullPointerException.class, () -> new ExampleEntity().setId(null));
+        var exception = assertThrows(NullPointerException.class, () -> ExampleEntity.Of(null));
         Assertions.assertEquals("The identity is null.", exception.getMessage());
     }
 
@@ -33,7 +35,7 @@ public class EntityTests {
     @DisplayName("When an invalid Identity is provided, the entity should throw a IllegalStateException with the message 'The identity is not valid.' .")
     public void IdentityThrowIllegalStateException() {
 
-        var exception = assertThrows(IllegalStateException.class, () -> new ExampleEntity().setId(Identity.Default()));
+        var exception = assertThrows(IllegalStateException.class, () -> ExampleEntity.Of(Identity.Default()));
         Assertions.assertEquals("The identity is not valid.", exception.getMessage());
 
     }
@@ -63,4 +65,11 @@ class ExampleEntity extends Entity {
     public void setIdentity(Identity id) {
         this.setId(id);
     }
+
+    public static Entity Of(Identity identity) {
+       var entity = new ExampleEntity();
+       entity.setIdentity(identity);
+       return entity;
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.wb3tech.kernel;
+package com.wb3tech.kernel.entity;
 
 public abstract class Entity implements Identifiable {
 

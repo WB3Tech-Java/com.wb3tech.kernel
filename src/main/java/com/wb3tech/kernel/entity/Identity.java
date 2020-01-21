@@ -1,4 +1,4 @@
-package com.wb3tech.kernel;
+package com.wb3tech.kernel.entity;
 
 import java.util.UUID;
 
@@ -61,7 +61,7 @@ public class Identity {
         return this.id;
     }
 
-    protected Identity copy() {
+    public Identity copy() {
         return new Identity(this.id);
     }
 

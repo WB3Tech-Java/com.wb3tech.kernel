@@ -1,7 +1,5 @@
 package com.wb3tech.kernel.valueobject;
 
-import com.wb3tech.kernel.ValueObject;
-
 public class Person extends ValueObject {
 
     private String givenName;
