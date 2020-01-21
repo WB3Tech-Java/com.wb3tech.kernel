@@ -1,4 +1,4 @@
-package com.wb3tech.kernel;
+package com.wb3tech.kernel.entity;
 
 import com.wb3tech.kernel.entity.Identity;
 import org.junit.jupiter.api.Assertions;
