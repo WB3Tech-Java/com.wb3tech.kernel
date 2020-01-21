@@ -1,7 +1,5 @@
 package com.wb3tech.kernel.valueobject;
 
-import com.wb3tech.kernel.ValueObject;
-
 import java.util.regex.Pattern;
 
 public class EmailAddress extends ValueObject {

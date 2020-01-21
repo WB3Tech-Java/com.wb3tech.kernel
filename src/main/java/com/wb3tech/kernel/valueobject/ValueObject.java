@@ -1,4 +1,4 @@
-package com.wb3tech.kernel;
+package com.wb3tech.kernel.valueobject;
 
 public abstract class ValueObject {
 
